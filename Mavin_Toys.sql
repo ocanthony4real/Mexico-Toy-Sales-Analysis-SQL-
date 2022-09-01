@@ -106,12 +106,13 @@ WHERE
 
 UPDATE products SET 
     Product_Price = TRIM(Product_Price) WHERE
-    Product_Price LIKE '% ';-- trim trailing carriage returns.
+    Product_Price LIKE '% ';-- trim trailing space.
 
 SELECT * FROM sales; -- manually inspect the sales table
 
 SELECT * FROM sales WHERE
-    Date IS NULL OR Store_ID IS NULL
+    Date IS NULL 
+		OR Store_ID IS NULL
         OR Product_ID IS NULL
         OR Units IS NULL;  -- check if columns have null values. None has.
 
@@ -178,4 +179,5 @@ FROM
     stores st ON s.Store_ID = st.Store_ID
         JOIN
     inventory i ON s.Store_ID = i.Store_ID
-        AND s.Product_ID = i.Product_ID INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/Mavin_Toys2.csv' FIELDS ENCLOSED BY "" TERMINATED BY ',' ESCAPED BY "" LINES TERMINATED BY '\n'; -- Export a joined table of necessary columns from the different tables into a csv file.
+        AND s.Product_ID = i.Product_ID INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/Mavin_Toys.csv' FIELDS ENCLOSED BY "" TERMINATED BY ',' ESCAPED BY "" LINES TERMINATED BY '\n'; 
+        -- Export a joined table of necessary columns from the different tables into a csv file.
