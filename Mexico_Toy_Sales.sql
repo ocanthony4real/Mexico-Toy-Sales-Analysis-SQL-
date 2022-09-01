@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS mavin_toys;  -- create database called 'mavin_toys'
+CREATE DATABASE IF NOT EXISTS mexico_toy_sales;  -- create database called 'mexico_toy_sales'
  
-USE mavin_toys;-- select mavin_toys database
+USE mexico_toy_sales;-- select mexico_toy_sales database
 
 CREATE TABLE inventory (
     Store_ID INT NOT NULL,
@@ -179,5 +179,5 @@ FROM
     stores st ON s.Store_ID = st.Store_ID
         JOIN
     inventory i ON s.Store_ID = i.Store_ID
-        AND s.Product_ID = i.Product_ID INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/Mavin_Toys.csv' FIELDS ENCLOSED BY "" TERMINATED BY ',' ESCAPED BY "" LINES TERMINATED BY '\n'; 
+        AND s.Product_ID = i.Product_ID INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/Mexico_toy_sales.csv' FIELDS ENCLOSED BY "" TERMINATED BY ',' ESCAPED BY "" LINES TERMINATED BY '\n'; 
         -- Export a joined table of necessary columns from the different tables into a csv file.
